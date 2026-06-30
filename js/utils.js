@@ -16,7 +16,8 @@ function meta(item) {
 }
 
 function weekLabel() {
-  return 'Jun 28';
+  const now = new Date();
+  return now.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 
 function buildShareText(buy) {

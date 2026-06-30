@@ -16,11 +16,8 @@ class Component extends DCLogic {
 
   // ── Persistence ──────────────────────────────────────────────────────────
 
-  componentDidUpdate(pp, ps) {
-    if (!ps) return;
-    if (ps.items !== this.state.items || ps.checked !== this.state.checked) {
-      saveInventory(this.state.items, this.state.checked);
-    }
+  componentDidUpdate() {
+    saveInventory(this.state.items, this.state.checked);
   }
 
   // ── Item CRUD ─────────────────────────────────────────────────────────────
@@ -276,7 +273,7 @@ class Component extends DCLogic {
 
     // Share
     const shareText = buildShareText(buy);
-    const smsHref = 'sms:&body=' + encodeURIComponent(shareText);
+    const smsHref = 'sms:?body=' + encodeURIComponent(shareText);
     const mailHref = 'mailto:?subject=' + encodeURIComponent('Grocery list · Week of ' + weekLabel()) + '&body=' + encodeURIComponent(shareText);
 
     // View toggle styles
